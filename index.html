@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Send message</title>
         <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     </head>
     <body>
     </body>
@@ -22,6 +23,33 @@
 
 	// 利用者のLINEアカウントのプロフィール名を取得
 	liff.getProfile().then(profile => {
+		
+		// Ajax通信処理
+            $.ajax({
+                // リクエスト送信先URLの設定
+                url: 'https://api.line.me/v2/bot/message/push',
+		type: "POST", // GET,POSTなどを指定
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer {d3UOtrrI8YU8gfqSr9Vlu/okv9Au3zewJRl8+tT3O5n64wHPvhjiAoVor7/4tjDX4afUh8fVtYLblJWpA2dVzREzEaBGrhhpb0HfFlPw9fwSRwVxDlPo5+PUEAlj6l6KXQebIOzWouZQDZlWslT+xgdB04t89/1O/w1cDnyilFU=}'
+		},
+		date:{
+			"to": ["Ub5b744571cd46292ddf723e41df3d3a5"],
+			"messages":[
+				{
+				"type":"text",
+				"text":"Hello, world1"
+				}
+			]
+		}
+                // 非同期通信フラグ
+		async: true,
+                // Ajax通信成功時にレスポンスデータ受け取り&処理実行
+                success: function(data) {
+                    document.write(data);
+                }
+            });
+		
 
 	// プロフィール名
 	
